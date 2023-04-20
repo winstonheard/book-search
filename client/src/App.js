@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider , createHttpLink} from '@apollo/client';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import { setContext } from '@apollo/client/link/context';
@@ -24,7 +24,7 @@ const authLink = setContext((_, { headers }) => {
 console.log(authLink);
 
 const client = new ApolloClient({
-  link: concat(authLink, httpLink),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 

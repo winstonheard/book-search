@@ -21,6 +21,8 @@ const SearchBooks = () => {
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
+  const [saveBook, { error, data }] = useMutation(SAVE_BOOK);
+
   // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
@@ -84,7 +86,7 @@ const SearchBooks = () => {
         }
       );
       if (error) {
-        throw new Error('something went wrong!');
+        throw new Error('there is an error');
       }
 
       // if book successfully saves to user's account, save book id to state
